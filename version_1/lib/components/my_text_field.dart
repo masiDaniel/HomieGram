@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class myTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
+  final IconData? suffixIcon;
 
   const myTextField({
     super.key,
     required this.hintText,
     required this.obscureText,
+    this.suffixIcon,
   });
 
   @override
@@ -29,6 +31,7 @@ class myTextField extends StatelessWidget {
           fillColor: Color.fromARGB(255, 206, 206, 206),
           filled: true,
           hintText: hintText,
+          suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
         ),
       ),
     );
