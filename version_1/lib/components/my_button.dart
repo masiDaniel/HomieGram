@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
   final String buttonText; // Add a parameter for the button text
+  final VoidCallback onPressed;
 
   const MyButton({
     Key? key,
-    required this.buttonText, // Initialize the parameter
+    required this.buttonText,
+    required this.onPressed, // Initialize the parameter
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: onTap,
+      onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 105),
@@ -22,7 +24,7 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonText, // Use the parameter for the text
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,
