@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:version_1/components/my_button.dart';
 import 'package:version_1/components/my_text_field.dart';
 import 'package:marquee/marquee.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Homie',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -51,7 +53,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     navigateToPageAfterDelay(context, '/welcomepage', 3);
     return Scaffold(
-      backgroundColor: const Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 88, 86, 77),
       body: Center(
         child: Container(
           child: SafeArea(
@@ -79,18 +81,25 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 95, 94, 89),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Text(
+              "HomieGram!",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             Container(
               padding: const EdgeInsets.all(10),
-              height: 350,
+              height: 300,
               width: 350,
               decoration: BoxDecoration(
                 color: Colors.black87,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: Marquee(
                 text:
@@ -99,21 +108,21 @@ class WelcomePage extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 18,
                 ),
-                scrollAxis: Axis.horizontal,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                scrollAxis: Axis.vertical,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 blankSpace: 90.0,
                 velocity: 90.0,
                 pauseAfterRound: Duration(seconds: 1),
-                startPadding: 10.0,
-                accelerationCurve: Curves.linear,
+                startPadding: 30.0,
+                accelerationCurve: Curves.elasticIn,
                 decelerationCurve: Curves.easeOut,
               ),
             ),
             const SizedBox(
-              height: 40,
+              height: 50,
             ),
             MyButton(
-              buttonText: "sign in!",
+              buttonText: "Login!",
               onPressed: () {
                 Navigator.pushNamed(context, '/signin');
               },
@@ -122,7 +131,7 @@ class WelcomePage extends StatelessWidget {
               height: 20,
             ),
             MyButton(
-              buttonText: "sign up!",
+              buttonText: "Sign Up!",
               onPressed: () {
                 Navigator.pushNamed(context, '/signup');
               },
@@ -140,16 +149,8 @@ class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 80, 79, 76),
       body: Container(
-        // decoration: const BoxDecoration(
-        //     gradient: LinearGradient(
-        //         begin: Alignment.topCenter,
-        //         end: Alignment.bottomCenter,
-        //         colors: [
-        //       Color.fromARGB(247, 7, 113, 99),
-        //       Color(0xFF93B4B8),
-        //     ])),
         child: SafeArea(
             child: Center(
           child: Column(
@@ -160,10 +161,10 @@ class SignIn extends StatelessWidget {
               ),
               const Text(
                 "Sign In",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(
+                height: 15,
               ),
               const Text(
                 "welcome back!",
@@ -172,16 +173,23 @@ class SignIn extends StatelessWidget {
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w700),
               ),
+              const SizedBox(
+                height: 10,
+              ),
               const myTextField(hintText: "email", obscureText: false),
               const SizedBox(
                 height: 15,
               ),
               const myTextField(hintText: "password", obscureText: true),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               const Text(
                 "forgot password?",
+                textAlign: TextAlign.right,
+              ),
+              const SizedBox(
+                height: 10,
               ),
               MyButton(
                 buttonText: "sign Up",
@@ -212,7 +220,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 74, 74, 72),
       body: Container(
         child: SafeArea(
             child: Center(
@@ -289,7 +297,7 @@ class _DashboardViewState extends State<dashboardView> {
     final PageController pageController = PageController();
 
     return Scaffold(
-      backgroundColor: const Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 103, 102, 101),
       appBar: const MyDashboardAppBar(),
       body: Stack(
         children: [
@@ -301,21 +309,23 @@ class _DashboardViewState extends State<dashboardView> {
               const SizedBox(height: 4),
               const CategoriesGrid(),
               const SizedBox(height: 4),
-              const Header(headerTitle: 'Discounts'),
+              const Header(headerTitle: 'Houses'),
               const ProductGrid(),
             ],
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+            bottom: 10,
+            left: 45,
+            right: 45,
             child: Container(
-              height: 80,
+              height: 60,
+              width: 700,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(30),
+                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(1.0),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Color.fromARGB(255, 7, 7, 7).withOpacity(0.1),
                     spreadRadius: 1,
                     blurRadius: 10,
                     offset: Offset(0, -3),
@@ -332,7 +342,11 @@ class _DashboardViewState extends State<dashboardView> {
                   child: AnimatedOpacity(
                     opacity: _isBlurVisible ? 0.0 : 1.0,
                     duration: Duration(milliseconds: 300),
-                    child: Icon(Icons.menu),
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.orange,
+                      size: 50,
+                    ),
                   ),
                 ),
               ),
@@ -341,9 +355,9 @@ class _DashboardViewState extends State<dashboardView> {
           if (_isBlurVisible)
             Positioned.fill(
                 child: Container(
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withOpacity(0.9),
                     child: Center(
-                      child: Column(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
@@ -352,21 +366,39 @@ class _DashboardViewState extends State<dashboardView> {
                                   _isBlurVisible = false;
                                 });
                               },
-                              icon: Icon(Icons.home)),
+                              icon: const Icon(
+                                Icons.home,
+                                color: Colors.orange,
+                                size: 40,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          ),
                           IconButton(
                               onPressed: () {
                                 setState(() {
                                   _isBlurVisible = false;
                                 });
                               },
-                              icon: Icon(Icons.settings)),
+                              icon: const Icon(
+                                Icons.settings,
+                                color: Colors.orange,
+                                size: 40,
+                              )),
+                          const SizedBox(
+                            width: 20,
+                          ),
                           IconButton(
                               onPressed: () {
                                 setState(() {
                                   _isBlurVisible = false;
                                 });
                               },
-                              icon: Icon(Icons.person)),
+                              icon: const Icon(
+                                Icons.shop,
+                                color: Colors.orange,
+                                size: 40,
+                              )),
                         ],
                       ),
                     )))
@@ -376,17 +408,6 @@ class _DashboardViewState extends State<dashboardView> {
   }
 }
 
-// child: Row(
-//   mainAxisAlignment: MainAxisAlignment.spaceAround,
-//   children: [
-//     IconButton(
-//       icon: Icon(Icons.home),
-//       onPressed: () {},
-//     ),
-//     IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-//     IconButton(onPressed: () {}, icon: Icon(Icons.shop)),
-//   ],
-// ),
 class CategoriesGrid extends StatelessWidget {
   const CategoriesGrid({super.key});
 
@@ -409,15 +430,15 @@ class CategoriesGrid extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 6, 6, 6),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(30)),
             ),
             child: ListTile(
-              contentPadding: EdgeInsets.zero,
+              contentPadding: EdgeInsets.all(3),
               title: Text(
                 categories[index],
                 style: const TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 16,
+                    fontSize: 12,
                     fontWeight: FontWeight.w600),
               ),
               trailing: const Icon(
@@ -445,14 +466,14 @@ class DashboardHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 150,
       child: PageView.builder(
         controller: pageController,
         itemCount: 5,
         itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: const EdgeInsets.all(10),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(24),
             child: SizedBox(
               width: 285,
               height: double.infinity,
@@ -482,7 +503,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.all(15),
       child: SizedBox(
         height: 61,
         width: 360,
@@ -522,17 +543,9 @@ class Header extends StatelessWidget {
                   SizedBox(
                     width: 10,
                   ),
-                  // SizedBox(
-                  //   height: 25,
-                  // ),
                   SizedBox(
                     height: 60,
                   ),
-                  // Icon(
-                  //   Icons.arrow_forward_ios,
-                  //   color: Colors.black,
-                  //   size: 12,
-                  // ),
                 ],
               ),
             )
@@ -568,7 +581,7 @@ class ProductGrid extends StatelessWidget {
                 flex: 1,
                 child: Stack(children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
                       'assets/heri.jpeg',
                       width: 165,
@@ -576,35 +589,11 @@ class ProductGrid extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  // Positioned(
-                  //   top: 10,
-                  //   right: 10,
-                  //   child: Container(
-                  //     decoration: const BoxDecoration(
-                  //         shape: BoxShape.circle, color: Colors.white),
-                  //     width: 22,
-                  //     height: 22,
-                  //     child: IconButton(
-                  //         padding: EdgeInsets.zero,
-                  //         onPressed: () {},
-                  //         icon: const Icon(
-                  //           Icons.more_horiz,
-                  //           size: 20,
-                  //         )),
-                  //   ),
-                  // )
                 ]),
               ),
               const SizedBox(
-                height: 11,
+                height: 05,
               ),
-              // const Text(
-              //   'Heri Hostels',
-              //   style: TextStyle(
-              //       color: Colors.black,
-              //       fontSize: 14,
-              //       fontWeight: FontWeight.w700),
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -615,13 +604,13 @@ class ProductGrid extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w700),
                   ),
-                  // Use Spacer to push the IconButton to the right
                   IconButton(
                     padding: EdgeInsets.zero,
                     onPressed: () {},
                     icon: const Icon(
                       Icons.more_horiz,
-                      size: 20,
+                      size: 28,
+                      color: Colors.black,
                     ),
                   ),
                 ],
@@ -633,13 +622,6 @@ class ProductGrid extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w400),
               ),
-              // const Text(
-              //   '\$75,',
-              //   style: TextStyle(
-              //       color: Colors.black,
-              //       fontSize: 14,
-              //       fontWeight: FontWeight.w700),
-              // ),
             ],
           ),
         ),
@@ -658,12 +640,13 @@ class MyDashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: EdgeInsets.only(right: 12),
           child: Icon(
-            Icons.people,
+            Icons.person,
             color: Colors.black,
+            size: 50,
           ),
         )
       ],
-      backgroundColor: const Color(0xffFCC707),
+      backgroundColor: Color.fromARGB(255, 68, 68, 67),
       centerTitle: false,
       elevation: 0.0,
       leading: Padding(
@@ -677,9 +660,9 @@ class MyDashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ),
-      title: const Text(
+      title: Text(
         "Dashboard",
-        style: TextStyle(
+        style: GoogleFonts.ultra(
           color: Colors.black,
           fontSize: 20,
           fontWeight: FontWeight.w900,
