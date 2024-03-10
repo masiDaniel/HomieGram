@@ -103,6 +103,9 @@ target/
 __pycache__/
 local_settings.py
 
+# database migrartions
+*migrations*
+
 .venv
 db.sqlite3
 
