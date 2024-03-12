@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:version_1/views/profile_page.dart';
 
 class MyDashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyDashboardAppBar({super.key});
@@ -9,13 +10,21 @@ class MyDashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      actions: const [
+      actions: [
         Padding(
           padding: EdgeInsets.all(12),
-          child: Icon(
-            Icons.person,
-            color: Color.fromARGB(255, 255, 255, 255),
-            size: 30,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            },
+            child: Icon(
+              Icons.person,
+              color: Color.fromARGB(255, 255, 255, 255),
+              size: 30,
+            ),
           ),
         )
       ],

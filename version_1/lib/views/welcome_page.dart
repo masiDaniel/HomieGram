@@ -44,7 +44,7 @@ class WelcomePage extends StatelessWidget {
                 scrollAxis: Axis.vertical,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 blankSpace: 90.0,
-                velocity: 90.0,
+                velocity: 20.0,
                 pauseAfterRound: Duration(seconds: 1),
                 startPadding: 30.0,
                 accelerationCurve: Curves.elasticIn,
