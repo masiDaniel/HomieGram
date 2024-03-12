@@ -37,14 +37,14 @@ class _DashboardViewState extends State<dashboardView> {
           ),
           Positioned(
             bottom: 10,
-            left: 115,
-            right: 115,
+            left: 145,
+            right: 145,
             child: Container(
               height: 60,
-              width: 700,
+              width: 650,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Color(0xFF2C5364).withOpacity(1.0),
+                color: Color.fromARGB(255, 43, 46, 47).withOpacity(1.0),
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(255, 7, 7, 7).withOpacity(0.1),
